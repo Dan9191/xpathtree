@@ -2,6 +2,7 @@ package org.example.models;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class XPathTreeNode {
     /**
      * Индекс по которому можно найти узел в плоском списке после обхода схемы.
      */
-    private int index;
+    private Optional<Integer> index;
 
     /**
      * Список дочерних узлов (пуст для листового элемента xPath).
@@ -34,6 +35,7 @@ public class XPathTreeNode {
 
     public XPathTreeNode(String name) {
         this.name = name;
+        this.childrenNodes = new ArrayList<>();
     }
 
     /**
@@ -55,7 +57,7 @@ public class XPathTreeNode {
      * @return Дочерний узел.
      */
     public XPathTreeNode addAndReturnChildrenNode(String childrenName) {
-        XPathTreeNode childrenNode = new XPathTreeNode(name);
+        XPathTreeNode childrenNode = new XPathTreeNode(childrenName);
         childrenNodes.add(childrenNode);
         return childrenNode;
     }

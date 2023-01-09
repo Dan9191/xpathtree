@@ -2,6 +2,7 @@ package org.example.models;
 
 import lombok.Data;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class SchemaNode {
      * @param nodeType Тип элемента.
      */
     public SchemaNode(String xPath, NodeType nodeType) {
-        this.elements = List.of(xPath.split("\\."));
+        this.elements = Arrays.asList(xPath.split("\\."));
         this.name = elements.get(elements.size() - 1);
         this.nodeType = nodeType;
     }
